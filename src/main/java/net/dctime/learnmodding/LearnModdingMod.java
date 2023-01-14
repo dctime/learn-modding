@@ -1,6 +1,7 @@
 package net.dctime.learnmodding;
 
 import com.mojang.logging.LogUtils;
+import net.dctime.learnmodding.block.ModBlocks;
 import net.dctime.learnmodding.item.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
@@ -65,7 +66,9 @@ public class LearnModdingMod
         modEventBus.addListener(this::addCreative);
         modEventBus.addListener(this::addCustomCreative);
 
+        // Register mod items and blocks
         ModItems.registerItemsInModItemClass(modEventBus);
+        ModBlocks.registerBLocksInModBlocksClass(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
@@ -97,6 +100,7 @@ public class LearnModdingMod
                         .displayItems((enabledFlags, populator, hasPermissions) -> {
                             populator.accept(ModItems.ZIRCON.get());
                             populator.accept(ModItems.RAW_ZIRCON.get());
+                            populator.accept(ModBlocks.ZIRCON_BLOCK_ITEM.get());
                         })
         );
     }
