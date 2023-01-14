@@ -23,27 +23,27 @@ public class ModBlocks
     public static final DeferredRegister<Item> BLOCK_ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, LearnModdingMod.MODID);
 
     public static final RegistryObject<Block> ZIRCON_BLOCK = BLOCKS.register("zircon_block",
-            () -> new Block(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).sound(SoundType.METAL).requiresCorrectToolForDrops()));
+            () -> new Block(BlockBehaviour.Properties.of(Material.STONE).strength(3.5f).sound(SoundType.METAL).requiresCorrectToolForDrops()));
     public static final RegistryObject<Item> ZIRCON_BLOCK_ITEM = BLOCK_ITEMS.register("zircon_block",
             () -> new BlockItem(ZIRCON_BLOCK.get(), new Item.Properties()));
 
     public static final RegistryObject<Block> ZIRCON_ORE = BLOCKS.register("zircon_ore",
-            () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops(), UniformInt.of(10, 12)));
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE).strength(3.5f).requiresCorrectToolForDrops(), UniformInt.of(10, 12)));
     public static final RegistryObject<Item> ZIRCON_ORE_ITEM = BLOCK_ITEMS.register("zircon_ore",
             () -> new BlockItem(ZIRCON_ORE.get(), new Item.Properties()));
 
     public static final RegistryObject<Block> NETHERRACK_ZIRCON_ORE = BLOCKS.register("netherrack_zircon_ore",
-            () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.3f).requiresCorrectToolForDrops().sound(SoundType.NETHERRACK), UniformInt.of(10, 12)));
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE).strength(3.3f).requiresCorrectToolForDrops().sound(SoundType.NETHERRACK), UniformInt.of(10, 12)));
     public static final RegistryObject<Item> NETHERRACK_ZIRCON_ORE_ITEM = BLOCK_ITEMS.register("netherrack_zircon_ore",
             () -> new BlockItem(NETHERRACK_ZIRCON_ORE.get(), new Item.Properties()));
 
     public static final RegistryObject<Block> DEEPSLATE_ZIRCON_ORE = BLOCKS.register("deepslate_zircon_ore",
-            () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.6f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE), UniformInt.of(10, 12)));
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE).strength(3.6f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE), UniformInt.of(10, 12)));
     public static final RegistryObject<Item> DEEPSLATE_ZIRCON_ORE_ITEM = BLOCK_ITEMS.register("deepslate_zircon_ore",
             () -> new BlockItem(DEEPSLATE_ZIRCON_ORE.get(), new Item.Properties()));
 
     public static final RegistryObject<Block> ENDSTONE_ZIRCON_ORE = BLOCKS.register("endstone_zircon_ore",
-            () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.6f).requiresCorrectToolForDrops().sound(SoundType.STONE), UniformInt.of(10, 12)));
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE).strength(3.6f).requiresCorrectToolForDrops().sound(SoundType.STONE), UniformInt.of(10, 12)));
     public static final RegistryObject<Item> ENDSTONE_ZIRCON_ORE_ITEM = BLOCK_ITEMS.register("endstone_zircon_ore",
             () -> new BlockItem(ENDSTONE_ZIRCON_ORE.get(), new Item.Properties()));
 
