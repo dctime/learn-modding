@@ -101,6 +101,10 @@ public class LearnModdingMod
                             populator.accept(ModItems.ZIRCON.get());
                             populator.accept(ModItems.RAW_ZIRCON.get());
                             populator.accept(ModBlocks.ZIRCON_BLOCK_ITEM.get());
+                            populator.accept(ModBlocks.ZIRCON_ORE_ITEM.get());
+                            populator.accept(ModBlocks.DEEPSLATE_ZIRCON_ORE_ITEM.get());
+                            populator.accept(ModBlocks.NETHERRACK_ZIRCON_ORE_ITEM.get());
+                            populator.accept(ModBlocks.ENDSTONE_ZIRCON_ORE_ITEM.get());
                         })
         );
     }

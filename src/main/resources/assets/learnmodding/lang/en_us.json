@@ -2,6 +2,10 @@
   "item.learnmodding.zircon": "Zircon",
   "item.learnmodding.raw_zircon": "Raw Zircon",
   "block.learnmodding.zircon_block": "Zircon Block",
+  "block.learnmodding.zircon_ore": "Zircon Ore",
+  "block.learnmodding.deepslate_zircon_ore": "Deepslate Zircon Ore",
+  "block.learnmodding.netherrack_zircon_ore": "Netherrack Zircon Ore",
+  "block.learnmodding.endstone_zircon_ore": "Endstone Zircon Ore",
 
   "item_group.learnmodding.learn": "Learn"
 }
