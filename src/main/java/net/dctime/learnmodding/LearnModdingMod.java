@@ -1,10 +1,14 @@
 package net.dctime.learnmodding;
 
 import com.mojang.logging.LogUtils;
+import net.dctime.learnmodding.item.ModItems;
 import net.minecraft.client.Minecraft;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -59,6 +63,9 @@ public class LearnModdingMod
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
+        modEventBus.addListener(this::addCustomCreative);
+
+        ModItems.registerItemsInModItemClass(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
@@ -72,6 +79,26 @@ public class LearnModdingMod
     {
         if (event.getTab() == CreativeModeTabs.BUILDING_BLOCKS)
             event.accept(EXAMPLE_BLOCK_ITEM);
+
+        if (event.getTab() == CreativeModeTabs.INGREDIENTS)
+        {
+            event.accept(ModItems.ZIRCON);
+            event.accept(ModItems.RAW_ZIRCON);
+        }
+    }
+
+    public void addCustomCreative(CreativeModeTabEvent.Register event) {
+        event.registerCreativeModeTab(new ResourceLocation(MODID, "learn"), builder ->
+                // Set name of tab to display
+                builder.title(Component.translatable("item_group." + MODID + ".learn"))
+                        // Set icon of creative tab
+                        .icon(() -> new ItemStack(ModItems.ZIRCON.get()))
+                        // Add default items to tab
+                        .displayItems((enabledFlags, populator, hasPermissions) -> {
+                            populator.accept(ModItems.ZIRCON.get());
+                            populator.accept(ModItems.RAW_ZIRCON.get());
+                        })
+        );
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
