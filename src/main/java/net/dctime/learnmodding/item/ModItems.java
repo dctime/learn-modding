@@ -1,6 +1,7 @@
 package net.dctime.learnmodding.item;
 
 import net.dctime.learnmodding.LearnModdingMod;
+import net.dctime.learnmodding.item.custom.Ball8Item;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -18,6 +19,7 @@ public class ModItems
 
     public static final RegistryObject<Item> ZIRCON = ITEMS.register("zircon", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> RAW_ZIRCON = ITEMS.register("raw_zircon", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BALL_8_ITEM = ITEMS.register("eight_ball", () -> new Ball8Item(new Item.Properties()));
 
 
     public static void registerItemsInModItemClass(IEventBus eventBus)

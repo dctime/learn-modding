@@ -1,6 +1,7 @@
 package net.dctime.learnmodding.block;
 
 import net.dctime.learnmodding.LearnModdingMod;
+import net.dctime.learnmodding.block.custom.JumpyBlock;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -46,6 +47,11 @@ public class ModBlocks
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE).strength(3.6f).requiresCorrectToolForDrops().sound(SoundType.STONE), UniformInt.of(10, 12)));
     public static final RegistryObject<Item> ENDSTONE_ZIRCON_ORE_ITEM = BLOCK_ITEMS.register("endstone_zircon_ore",
             () -> new BlockItem(ENDSTONE_ZIRCON_ORE.get(), new Item.Properties()));
+
+    public static final RegistryObject<Block> JUMPY_BLOCK = BLOCKS.register("jumpy_block",
+            () -> new JumpyBlock(BlockBehaviour.Properties.of(Material.STONE).strength(3.5f).sound(SoundType.STONE)));
+    public static final RegistryObject<Item> JUMPY_BLOCK_ITEM = BLOCK_ITEMS.register("jumpy_block",
+            () -> new BlockItem(JUMPY_BLOCK.get(), new Item.Properties()));
 
 
 

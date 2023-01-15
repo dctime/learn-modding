@@ -105,6 +105,8 @@ public class LearnModdingMod
                             populator.accept(ModBlocks.DEEPSLATE_ZIRCON_ORE_ITEM.get());
                             populator.accept(ModBlocks.NETHERRACK_ZIRCON_ORE_ITEM.get());
                             populator.accept(ModBlocks.ENDSTONE_ZIRCON_ORE_ITEM.get());
+                            populator.accept(ModItems.BALL_8_ITEM.get());
+                            populator.accept(ModBlocks.JUMPY_BLOCK.get());
                         })
         );
     }

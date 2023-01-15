@@ -6,6 +6,8 @@
   "block.learnmodding.deepslate_zircon_ore": "Deepslate Zircon Ore",
   "block.learnmodding.netherrack_zircon_ore": "Netherrack Zircon Ore",
   "block.learnmodding.endstone_zircon_ore": "Endstone Zircon Ore",
+  "item.learnmodding.eight_ball": "Eight Ball",
+  "block.learnmodding.jumpy_block": "Jumpy Block",
 
   "item_group.learnmodding.learn": "Learn"
 }
