@@ -107,6 +107,7 @@ public class LearnModdingMod
                             populator.accept(ModBlocks.ENDSTONE_ZIRCON_ORE_ITEM.get());
                             populator.accept(ModItems.BALL_8_ITEM.get());
                             populator.accept(ModBlocks.JUMPY_BLOCK.get());
+                            populator.accept(ModBlocks.ZIRCON_LAMP_BLOCK.get());
                         })
         );
     }

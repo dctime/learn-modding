@@ -2,6 +2,7 @@ package net.dctime.learnmodding.block;
 
 import net.dctime.learnmodding.LearnModdingMod;
 import net.dctime.learnmodding.block.custom.JumpyBlock;
+import net.dctime.learnmodding.block.custom.ZirconLampBlock;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -9,6 +10,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -53,7 +56,11 @@ public class ModBlocks
     public static final RegistryObject<Item> JUMPY_BLOCK_ITEM = BLOCK_ITEMS.register("jumpy_block",
             () -> new BlockItem(JUMPY_BLOCK.get(), new Item.Properties()));
 
-
+    public static final RegistryObject<Block> ZIRCON_LAMP_BLOCK = BLOCKS.register("zircon_lamp",
+            () -> new ZirconLampBlock(BlockBehaviour.Properties.of(Material.GLASS).sound(SoundType.GLASS).instabreak()
+                    .lightLevel(ModBlocks::zirconLampLitOrNot)));
+    public static final RegistryObject<Item> ZIRCON_LAMP_BLOCK_ITEM = BLOCK_ITEMS.register("zircon_lamp",
+            () -> new BlockItem(ZIRCON_LAMP_BLOCK.get(), new Item.Properties()));
 
 
     public static void registerBLocksInModBlocksClass(IEventBus eventBus)
@@ -62,5 +69,15 @@ public class ModBlocks
         BLOCK_ITEMS.register(eventBus);
     }
 
-
+    private static int zirconLampLitOrNot(BlockState blockState)
+    {
+        if (blockState.getValue(ZirconLampBlock.LIT))
+        {
+            return 15;
+        }
+        else
+        {
+            return 0;
+        }
+    }
 }
