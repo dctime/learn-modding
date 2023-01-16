@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "learnmodding:block/blueberry_stage0"
+    },
+    "age=1": {
+      "model": "learnmodding:block/blueberry_stage1"
+    },
+    "age=2": {
+      "model": "learnmodding:block/blueberry_stage2"
+    },
+    "age=3": {
+      "model": "learnmodding:block/blueberry_stage3"
+    },
+    "age=4": {
+      "model": "learnmodding:block/blueberry_stage4"
+    },
+    "age=5": {
+      "model": "learnmodding:block/blueberry_stage5"
+    },
+    "age=6": {
+      "model": "learnmodding:block/blueberry_stage6"
+    },
+    "age=7": {
+      "model": "learnmodding:block/blueberry_stage7"
+    }
+  }
+}

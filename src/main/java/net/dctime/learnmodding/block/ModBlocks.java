@@ -1,12 +1,14 @@
 package net.dctime.learnmodding.block;
 
 import net.dctime.learnmodding.LearnModdingMod;
+import net.dctime.learnmodding.block.custom.BlueBerryCropBlock;
 import net.dctime.learnmodding.block.custom.JumpyBlock;
 import net.dctime.learnmodding.block.custom.ZirconLampBlock;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -61,6 +63,9 @@ public class ModBlocks
                     .lightLevel(ModBlocks::zirconLampLitOrNot)));
     public static final RegistryObject<Item> ZIRCON_LAMP_BLOCK_ITEM = BLOCK_ITEMS.register("zircon_lamp",
             () -> new BlockItem(ZIRCON_LAMP_BLOCK.get(), new Item.Properties()));
+
+    public static final RegistryObject<Block> BLUEBERRY_CROP_BLOCK = BLOCKS.register("blueberry",
+            () -> new BlueBerryCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
 
 
     public static void registerBLocksInModBlocksClass(IEventBus eventBus)

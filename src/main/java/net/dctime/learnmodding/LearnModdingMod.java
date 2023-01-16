@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import net.dctime.learnmodding.block.ModBlocks;
 import net.dctime.learnmodding.item.ModItems;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
@@ -15,6 +16,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.model.renderable.ITextureRenderTypeLookup;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -108,6 +110,8 @@ public class LearnModdingMod
                             populator.accept(ModItems.BALL_8_ITEM.get());
                             populator.accept(ModBlocks.JUMPY_BLOCK.get());
                             populator.accept(ModBlocks.ZIRCON_LAMP_BLOCK.get());
+                            populator.accept(ModItems.BLUEBERRY_SEED.get());
+                            populator.accept(ModItems.BLUEBERRY.get());
                         })
         );
     }
