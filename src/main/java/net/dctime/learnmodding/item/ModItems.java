@@ -22,7 +22,7 @@ public class ModItems
 
     public static final RegistryObject<Item> ZIRCON = ITEMS.register("zircon", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> RAW_ZIRCON = ITEMS.register("raw_zircon", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> BALL_8_ITEM = ITEMS.register("eight_ball", () -> new Ball8Item(new Item.Properties()));
+    public static final RegistryObject<Item> BALL_8_ITEM = ITEMS.register("eight_ball", () -> new Ball8Item(new Item.Properties().stacksTo(1)));
 
     public static final RegistryObject<Item> BLUEBERRY_SEED = ITEMS.register("blueberry_seeds",
             () -> new ItemNameBlockItem(ModBlocks.BLUEBERRY_CROP_BLOCK.get(), new Item.Properties()));

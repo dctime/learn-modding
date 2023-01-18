@@ -8,9 +8,14 @@
   "block.learnmodding.endstone_zircon_ore": "Endstone Zircon Ore",
   "item.learnmodding.eight_ball": "Eight Ball",
   "block.learnmodding.jumpy_block": "Jumpy Block",
+  "block.learnmodding.zircon_lamp": "Zircon Lamp",
+  "item.learnmodding.blueberry_seeds": "Blueberry Seeds",
+  "item.learnmodding.blueberry": "Blueberry",
 
   "tooltip.learnmodding.eight_ball_default": "Press SHIFT for more details",
   "tooltip.learnmodding.eight_ball_shift": "Right click to get a random number from 0 - 10",
 
-  "item_group.learnmodding.learn": "Learn"
+  "item_group.learnmodding.learn": "Learn",
+
+  "entity.minecraft.villager.learnmodding.jumpy_master": "Jumpy Master"
 }

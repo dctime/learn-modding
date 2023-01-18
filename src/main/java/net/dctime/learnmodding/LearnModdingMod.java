@@ -3,6 +3,7 @@ package net.dctime.learnmodding;
 import com.mojang.logging.LogUtils;
 import net.dctime.learnmodding.block.ModBlocks;
 import net.dctime.learnmodding.item.ModItems;
+import net.dctime.learnmodding.villager.ModVillagers;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.network.chat.Component;
@@ -71,10 +72,14 @@ public class LearnModdingMod
         // Register mod items and blocks
         ModItems.registerItemsInModItemClass(modEventBus);
         ModBlocks.registerBLocksInModBlocksClass(modEventBus);
+        ModVillagers.register(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
+        event.enqueueWork(() -> {
+           ModVillagers.registerPOIs();
+        });
         // Some common setup code
         LOGGER.info("HELLO FROM COMMON SETUP");
         LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
