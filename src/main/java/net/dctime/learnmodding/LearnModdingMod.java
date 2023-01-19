@@ -5,6 +5,8 @@ import net.dctime.learnmodding.block.ModBlocks;
 import net.dctime.learnmodding.item.ModItems;
 import net.dctime.learnmodding.painting.ModPaintingVariant;
 import net.dctime.learnmodding.villager.ModVillagers;
+//import net.dctime.learnmodding.world.feature.ModConfiguredFeatures;
+//import net.dctime.learnmodding.world.feature.ModPlacedFeatures;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.network.chat.Component;
@@ -75,6 +77,8 @@ public class LearnModdingMod
         ModBlocks.registerBLocksInModBlocksClass(modEventBus);
         ModVillagers.register(modEventBus);
         ModPaintingVariant.register(modEventBus);
+        //ModConfiguredFeatures.register(modEventBus);
+        //ModPlacedFeatures.register(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
