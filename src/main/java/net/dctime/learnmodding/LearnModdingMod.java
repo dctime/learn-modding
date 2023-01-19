@@ -3,6 +3,7 @@ package net.dctime.learnmodding;
 import com.mojang.logging.LogUtils;
 import net.dctime.learnmodding.block.ModBlocks;
 import net.dctime.learnmodding.item.ModItems;
+import net.dctime.learnmodding.painting.ModPaintingVariant;
 import net.dctime.learnmodding.villager.ModVillagers;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -73,6 +74,7 @@ public class LearnModdingMod
         ModItems.registerItemsInModItemClass(modEventBus);
         ModBlocks.registerBLocksInModBlocksClass(modEventBus);
         ModVillagers.register(modEventBus);
+        ModPaintingVariant.register(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
