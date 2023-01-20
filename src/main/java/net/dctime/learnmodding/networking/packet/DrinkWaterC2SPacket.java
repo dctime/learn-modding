@@ -1,5 +1,6 @@
 package net.dctime.learnmodding.networking.packet;
 
+import net.dctime.learnmodding.thirst.PlayerThirstProvider;
 import net.minecraft.client.sounds.WeighedSoundEvents;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -35,9 +36,23 @@ public class DrinkWaterC2SPacket
         {
             if (ctx.get().getSender().isInWater())
             {
-                ctx.get().getSender().sendSystemMessage(Component.translatable("message.learnmodding.drinking_water_successful"), true);
-                ctx.get().getSender().getLevel().playSound(null, ctx.get().getSender().blockPosition(),
-                        SoundEvents.GENERIC_DRINK, SoundSource.PLAYERS);
+                ctx.get().getSender().getCapability(PlayerThirstProvider.PLAYER_THIRST).ifPresent(playerThirst ->
+                {
+                    if (playerThirst.getThirst() > 0)
+                    {
+                        ctx.get().getSender().sendSystemMessage(Component.translatable("message.learnmodding.drinking_water_successful"), true);
+                        ctx.get().getSender().getLevel().playSound(null, ctx.get().getSender().blockPosition(),
+                                SoundEvents.GENERIC_DRINK, SoundSource.PLAYERS);
+                        playerThirst.setThirst(playerThirst.getThirst()-1);
+                    }
+                    else
+                    {
+                        ctx.get().getSender().sendSystemMessage(Component.translatable("message.learnmodding.drinking_water_is_full"), true);
+                        ctx.get().getSender().getLevel().playSound(null, ctx.get().getSender().blockPosition(), SoundEvents.PLAYER_BURP, SoundSource.PLAYERS);
+                    }
+
+                    ctx.get().getSender().sendSystemMessage(Component.literal("Thirst: " + playerThirst.getThirst()), false);
+                });
             }
             else
             {
