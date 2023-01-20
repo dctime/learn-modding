@@ -1,5 +1,8 @@
 package net.dctime.learnmodding.event;
 
+import net.dctime.learnmodding.networking.ModMessages;
+import net.dctime.learnmodding.networking.packet.DrinkWaterC2SPacket;
+import net.dctime.learnmodding.networking.packet.ExampleC2SPacket;
 import net.dctime.learnmodding.util.KeyBinding;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
@@ -22,6 +25,7 @@ public class ClientEvents
             if (KeyBinding.DRINKING_KEY.consumeClick())
             {
                 Minecraft.getInstance().player.displayClientMessage(Component.literal("O Clicked"), false);
+                ModMessages.sendToServer(new DrinkWaterC2SPacket());
             }
         }
     }

@@ -3,12 +3,10 @@ package net.dctime.learnmodding;
 import com.mojang.logging.LogUtils;
 import net.dctime.learnmodding.block.ModBlocks;
 import net.dctime.learnmodding.item.ModItems;
+import net.dctime.learnmodding.networking.ModMessages;
 import net.dctime.learnmodding.painting.ModPaintingVariant;
 import net.dctime.learnmodding.villager.ModVillagers;
-//import net.dctime.learnmodding.world.feature.ModConfiguredFeatures;
-//import net.dctime.learnmodding.world.feature.ModPlacedFeatures;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
@@ -20,7 +18,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.model.renderable.ITextureRenderTypeLookup;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -77,15 +74,16 @@ public class LearnModdingMod
         ModBlocks.registerBLocksInModBlocksClass(modEventBus);
         ModVillagers.register(modEventBus);
         ModPaintingVariant.register(modEventBus);
-        //ModConfiguredFeatures.register(modEventBus);
-        //ModPlacedFeatures.register(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
+        // SERVER SIDE
         event.enqueueWork(() -> {
-           ModVillagers.registerPOIs();
+            ModVillagers.registerPOIs();
         });
+
+        ModMessages.register();
         // Some common setup code
         LOGGER.info("HELLO FROM COMMON SETUP");
         LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
