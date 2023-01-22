@@ -3,6 +3,7 @@ package net.dctime.learnmodding.networking;
 import net.dctime.learnmodding.LearnModdingMod;
 import net.dctime.learnmodding.networking.packet.DrinkWaterC2SPacket;
 import net.dctime.learnmodding.networking.packet.ExampleC2SPacket;
+import net.dctime.learnmodding.networking.packet.ThirstDataSyncS2CPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkDirection;
@@ -36,6 +37,12 @@ public class ModMessages
                 .encoder(DrinkWaterC2SPacket::toBytes)
                 .decoder(DrinkWaterC2SPacket::new)
                 .consumerMainThread(DrinkWaterC2SPacket::handle)
+                .add();
+
+        channel.messageBuilder(ThirstDataSyncS2CPacket.class, 2, NetworkDirection.PLAY_TO_CLIENT)
+                .encoder(ThirstDataSyncS2CPacket::toBytes)
+                .decoder(ThirstDataSyncS2CPacket::new)
+                .consumerMainThread(ThirstDataSyncS2CPacket::handle)
                 .add();
     }
 

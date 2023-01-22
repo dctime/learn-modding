@@ -1,5 +1,6 @@
 package net.dctime.learnmodding.networking.packet;
 
+import net.dctime.learnmodding.networking.ModMessages;
 import net.dctime.learnmodding.thirst.PlayerThirstProvider;
 import net.minecraft.client.sounds.WeighedSoundEvents;
 import net.minecraft.network.FriendlyByteBuf;
@@ -34,6 +35,7 @@ public class DrinkWaterC2SPacket
     {
         ctx.get().enqueueWork(() ->
         {
+            // Server side
             if (ctx.get().getSender().isInWater())
             {
                 ctx.get().getSender().getCapability(PlayerThirstProvider.PLAYER_THIRST).ifPresent(playerThirst ->
@@ -52,6 +54,7 @@ public class DrinkWaterC2SPacket
                     }
 
                     ctx.get().getSender().sendSystemMessage(Component.literal("Thirst: " + playerThirst.getThirst()), false);
+                    ModMessages.sendToPlayer(new ThirstDataSyncS2CPacket(playerThirst.getThirst()), ctx.get().getSender());
                 });
             }
             else
