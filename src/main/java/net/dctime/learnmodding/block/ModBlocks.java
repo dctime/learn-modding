@@ -4,13 +4,11 @@ import net.dctime.learnmodding.LearnModdingMod;
 import net.dctime.learnmodding.block.custom.BlueBerryCropBlock;
 import net.dctime.learnmodding.block.custom.JumpyBlock;
 import net.dctime.learnmodding.block.custom.ZirconLampBlock;
+import net.dctime.learnmodding.fluid.ModFluids;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.DropExperienceBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -66,6 +64,12 @@ public class ModBlocks
 
     public static final RegistryObject<Block> BLUEBERRY_CROP_BLOCK = BLOCKS.register("blueberry",
             () -> new BlueBerryCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
+
+    public static final RegistryObject<LiquidBlock> SOAP_WATER_BLOCK = BLOCKS.register("soap_water_block",
+            () -> new LiquidBlock(
+                    ModFluids.FLOWING_SOAP_WATER,
+                    BlockBehaviour.Properties.copy(Blocks.WATER)
+            ));
 
 
     public static void registerBLocksInModBlocksClass(IEventBus eventBus)

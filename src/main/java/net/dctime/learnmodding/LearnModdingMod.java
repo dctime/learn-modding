@@ -1,12 +1,17 @@
 package net.dctime.learnmodding;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
 import net.dctime.learnmodding.block.ModBlocks;
+import net.dctime.learnmodding.fluid.ModFluidTypes;
+import net.dctime.learnmodding.fluid.ModFluids;
 import net.dctime.learnmodding.item.ModItems;
 import net.dctime.learnmodding.networking.ModMessages;
 import net.dctime.learnmodding.painting.ModPaintingVariant;
 import net.dctime.learnmodding.villager.ModVillagers;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
@@ -18,6 +23,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -74,6 +80,8 @@ public class LearnModdingMod
         ModBlocks.registerBLocksInModBlocksClass(modEventBus);
         ModVillagers.register(modEventBus);
         ModPaintingVariant.register(modEventBus);
+        ModFluidTypes.register(modEventBus);
+        ModFluids.register(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
@@ -143,6 +151,8 @@ public class LearnModdingMod
             // Some client setup code
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+            ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_SOAP_WATER.get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_SOAP_WATER.get(), RenderType.translucent());
         }
     }
 }
