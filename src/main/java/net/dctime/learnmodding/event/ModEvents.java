@@ -78,7 +78,7 @@ public class ModEvents
             //SERVER SIDE
             event.player.getCapability(PlayerThirstProvider.PLAYER_THIRST).ifPresent(playerThirst ->
             {
-                if (Math.random() < 0.001f)
+                if (Math.random() < 0.001f && playerThirst.getThirst() < 10)
                 {
                     playerThirst.setThirst(playerThirst.getThirst()+1);
                     event.player.displayClientMessage(Component.literal("Thirst: " + playerThirst.getThirst()), false);

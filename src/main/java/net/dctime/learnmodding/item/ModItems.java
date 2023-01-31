@@ -32,6 +32,8 @@ public class ModItems
     public static final RegistryObject<Item> SOAP_WATER_BUCKET = ITEMS.register("soap_water_bucket",
             () -> new BucketItem(ModFluids.SOURCE_SOAP_WATER, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
+    public static final RegistryObject<SwordItem> LEARN_SWORD = ITEMS.register("learn_sword",
+            () -> new SwordItem(Tiers.DIAMOND, 10, 5f, new Item.Properties().stacksTo(1)));
 
     public static void registerItemsInModItemClass(IEventBus eventBus)
     {

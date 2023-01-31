@@ -129,6 +129,8 @@ public class LearnModdingMod
                             populator.accept(ModBlocks.ZIRCON_LAMP_BLOCK.get());
                             populator.accept(ModItems.BLUEBERRY_SEED.get());
                             populator.accept(ModItems.BLUEBERRY.get());
+                            populator.accept(ModItems.SOAP_WATER_BUCKET.get());
+                            populator.accept(ModItems.LEARN_SWORD.get());
                         })
         );
     }
