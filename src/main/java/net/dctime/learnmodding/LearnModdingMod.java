@@ -131,6 +131,7 @@ public class LearnModdingMod
                             populator.accept(ModItems.BLUEBERRY.get());
                             populator.accept(ModItems.SOAP_WATER_BUCKET.get());
                             populator.accept(ModItems.LEARN_SWORD.get());
+                            populator.accept(ModBlocks.GEM_INFUSER_BLOCK_ITEM.get());
                         })
         );
     }

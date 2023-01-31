@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "learnmodding:block/gem_infuser",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "learnmodding:block/gem_infuser"
+    },
+    "facing=south": {
+      "model": "learnmodding:block/gem_infuser",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "learnmodding:block/gem_infuser",
+      "y": 270
+    }
+  }
+}

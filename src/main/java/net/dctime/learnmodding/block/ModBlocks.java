@@ -2,6 +2,7 @@ package net.dctime.learnmodding.block;
 
 import net.dctime.learnmodding.LearnModdingMod;
 import net.dctime.learnmodding.block.custom.BlueBerryCropBlock;
+import net.dctime.learnmodding.block.custom.GemInfusingStationBlock;
 import net.dctime.learnmodding.block.custom.JumpyBlock;
 import net.dctime.learnmodding.block.custom.ZirconLampBlock;
 import net.dctime.learnmodding.fluid.ModFluids;
@@ -65,11 +66,17 @@ public class ModBlocks
     public static final RegistryObject<Block> BLUEBERRY_CROP_BLOCK = BLOCKS.register("blueberry",
             () -> new BlueBerryCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
 
-    public static final RegistryObject<LiquidBlock> SOAP_WATER_BLOCK = BLOCKS.register("soap_water_block",
+    public static final RegistryObject<Block> SOAP_WATER_BLOCK = BLOCKS.register("soap_water_block",
             () -> new LiquidBlock(
                     ModFluids.FLOWING_SOAP_WATER,
                     BlockBehaviour.Properties.copy(Blocks.WATER)
             ));
+
+    public static final RegistryObject<Block> GEM_INFUSER_BLOCK = BLOCKS.register("gem_infuser",
+            () -> new GemInfusingStationBlock(BlockBehaviour.Properties.of(Material.STONE).noOcclusion()));
+
+    public static final RegistryObject<Item> GEM_INFUSER_BLOCK_ITEM = BLOCK_ITEMS.register("gem_infuser",
+            () -> new BlockItem(GEM_INFUSER_BLOCK.get(), new Item.Properties()));
 
 
     public static void registerBLocksInModBlocksClass(IEventBus eventBus)

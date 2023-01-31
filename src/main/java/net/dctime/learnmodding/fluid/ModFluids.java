@@ -31,7 +31,7 @@ public class ModFluids
                     ModFluids.SOURCE_SOAP_WATER,
                     ModFluids.FLOWING_SOAP_WATER
             )
-                    .block(ModBlocks.SOAP_WATER_BLOCK)
+                    .block(() -> (LiquidBlock) ModBlocks.SOAP_WATER_BLOCK.get())
                     .bucket(ModItems.SOAP_WATER_BUCKET)));
 
     public static void register(IEventBus eventBus)
