@@ -141,6 +141,7 @@ public class GemInfusingStationBlockEntity extends BlockEntity implements MenuPr
     }
 
     // when chuck is being loaded and nbt is loading
+    // nbt ->(load) itemStackHandler ->(onLoad) lazyItemHandler -> getCapability()
     @Override
     public void load(CompoundTag nbt)
     {
@@ -166,7 +167,6 @@ public class GemInfusingStationBlockEntity extends BlockEntity implements MenuPr
         // called in every tick
         if (!level.isClientSide() && validInputAndOutput(entity))
         {
-            System.out.println(entity.progress);
             if (entity.progress < entity.maxProgress)
             {
                 entity.progress++;

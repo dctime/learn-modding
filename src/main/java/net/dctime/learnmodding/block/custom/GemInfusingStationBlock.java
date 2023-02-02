@@ -112,7 +112,7 @@ public class GemInfusingStationBlock extends BaseEntityBlock
             }
         }
 
-        return InteractionResult.sidedSuccess(level.isClientSide());
+        return InteractionResult.sidedSuccess(!level.isClientSide());
     }
 
     // let the block know that it has a block entity
