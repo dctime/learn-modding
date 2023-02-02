@@ -3,13 +3,17 @@ package net.dctime.learnmodding;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
 import net.dctime.learnmodding.block.ModBlocks;
+import net.dctime.learnmodding.block.entity.ModBlockEntities;
 import net.dctime.learnmodding.fluid.ModFluidTypes;
 import net.dctime.learnmodding.fluid.ModFluids;
 import net.dctime.learnmodding.item.ModItems;
 import net.dctime.learnmodding.networking.ModMessages;
 import net.dctime.learnmodding.painting.ModPaintingVariant;
+import net.dctime.learnmodding.screen.GemInfuserScreen;
+import net.dctime.learnmodding.screen.ModMenuTypes;
 import net.dctime.learnmodding.villager.ModVillagers;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
@@ -82,6 +86,8 @@ public class LearnModdingMod
         ModPaintingVariant.register(modEventBus);
         ModFluidTypes.register(modEventBus);
         ModFluids.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
@@ -89,6 +95,7 @@ public class LearnModdingMod
         // SERVER SIDE
         event.enqueueWork(() -> {
             ModVillagers.registerPOIs();
+
         });
 
         ModMessages.register();
@@ -156,6 +163,7 @@ public class LearnModdingMod
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
             ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_SOAP_WATER.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_SOAP_WATER.get(), RenderType.translucent());
+            MenuScreens.register(ModMenuTypes.GEM_INFUSER_MENU.get(), GemInfuserScreen::new);
         }
     }
 }
