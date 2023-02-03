@@ -3,6 +3,8 @@ package net.dctime.learnmodding.block.entity;
 import com.mojang.serialization.Decoder;
 import net.dctime.learnmodding.block.custom.GemInfusingStationBlock;
 import net.dctime.learnmodding.item.ModItems;
+import net.dctime.learnmodding.recipe.GemInfusingStationRecipe;
+import net.dctime.learnmodding.recipe.ModRecipes;
 import net.dctime.learnmodding.screen.GemInfuserMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -30,6 +32,8 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
 
 public class GemInfusingStationBlockEntity extends BlockEntity implements MenuProvider
 {
@@ -165,7 +169,17 @@ public class GemInfusingStationBlockEntity extends BlockEntity implements MenuPr
     public static void tick(Level level, BlockPos blockPos, BlockState blockState, GemInfusingStationBlockEntity entity)
     {
         // called in every tick
-        if (!level.isClientSide() && validInputAndOutput(entity))
+
+        SimpleContainer itemsInMachine = new SimpleContainer(3);
+        for (int i = 0; i < itemsInMachine.getContainerSize(); i++)
+        {
+            itemsInMachine.setItem(i, entity.itemStackHandler.getStackInSlot(i));
+        }
+
+        Optional<GemInfusingStationRecipe> validRecipe = entity.level.getRecipeManager()
+                .getRecipeFor(GemInfusingStationRecipe.Type.INSTANCE, itemsInMachine, entity.level);
+
+        if (!level.isClientSide() && validInputAndOutput(entity, validRecipe))
         {
             if (entity.progress < entity.maxProgress)
             {
@@ -176,7 +190,7 @@ public class GemInfusingStationBlockEntity extends BlockEntity implements MenuPr
             {
                 entity.progress = 0;
                 entity.itemStackHandler.extractItem(1, 1, false);
-                entity.itemStackHandler.setStackInSlot(2, new ItemStack(ModItems.ZIRCON.get(),
+                entity.itemStackHandler.setStackInSlot(2, new ItemStack(validRecipe.get().getResultItem().getItem(),
                         entity.itemStackHandler.getStackInSlot(2).getCount()+1));
                 setChanged(level, blockPos, blockState);
             }
@@ -184,10 +198,9 @@ public class GemInfusingStationBlockEntity extends BlockEntity implements MenuPr
 
     }
 
-    private static boolean validInputAndOutput(GemInfusingStationBlockEntity blockEntity)
+    private static boolean validInputAndOutput(GemInfusingStationBlockEntity blockEntity, Optional<GemInfusingStationRecipe> validRecipe)
     {
-        return blockEntity.itemStackHandler.getStackInSlot(1).getItem() == ModItems.RAW_ZIRCON.get() &&
-        canPutThingsToSlot(blockEntity.itemStackHandler, ModItems.ZIRCON.get());
+        return validRecipe.isPresent() && canPutThingsToSlot(blockEntity.itemStackHandler, validRecipe.get().getResultItem().getItem());
     }
 
     private static boolean canPutThingsToSlot(ItemStackHandler itemStackHandler, Item testItem)

@@ -1,0 +1,15 @@
+{
+  "type": "learnmodding:gem_infusing",
+  "ingredients":
+  [
+    {
+      "item": "learnmodding:zircon"
+    }
+  ],
+  "output":
+  {
+    "item": "learnmodding:learn_sword"
+  }
+
+
+}

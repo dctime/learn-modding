@@ -9,6 +9,7 @@ import net.dctime.learnmodding.fluid.ModFluids;
 import net.dctime.learnmodding.item.ModItems;
 import net.dctime.learnmodding.networking.ModMessages;
 import net.dctime.learnmodding.painting.ModPaintingVariant;
+import net.dctime.learnmodding.recipe.ModRecipes;
 import net.dctime.learnmodding.screen.GemInfuserScreen;
 import net.dctime.learnmodding.screen.ModMenuTypes;
 import net.dctime.learnmodding.villager.ModVillagers;
@@ -88,6 +89,7 @@ public class LearnModdingMod
         ModFluids.register(modEventBus);
         ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);
+        ModRecipes.register(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
