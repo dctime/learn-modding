@@ -28,6 +28,12 @@ public class GemInfusingStationRecipe implements Recipe<SimpleContainer>
         this.recipeItems = recipeItems;
     }
 
+    @Override
+    public NonNullList<Ingredient> getIngredients()
+    {
+        return recipeItems;
+    }
+
     // does the recipe matches? if yes, it will return true, else false
     @Override
     public boolean matches(SimpleContainer pContainer, Level pLevel)
